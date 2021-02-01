@@ -12,8 +12,13 @@ import io.quarkus.qute.TemplateInstance;
 @Path("/")
 public class WelcomeResource {
 
-    // TODO: Inject template
+    @Inject
+    Template welcome;
 
-    // TODO: Add TemplateInstance
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance get() {
+        return welcome.data("active", "home");
+    }
 
 }

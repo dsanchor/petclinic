@@ -6,28 +6,20 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.acme.service.VetsService;
-
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 
-// import org.acme.service.VetsService;
-
-@Path("vets")
-public class VetsResource {
-
-    @Inject 
-    VetsService service; 
+@Path("tcs")
+public class TCsResource {
 
     @Inject
-    Template vets;
+    Template tcs;
 
-    // TODO: Inject RestClient Bean
-    
     @GET
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance get() {
-        return vets.data("active", "vets")
-                .data("vets", service.getAll());
+        return tcs.data("active", "tcs")
+                .data("message", "Terms and conditions will go here");
     }
+
 }
