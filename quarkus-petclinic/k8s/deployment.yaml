@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: quarkus-petclinic
+  name: quarkus-petclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-petclinic
+  template:
+    metadata:
+      labels:
+        app: quarkus-petclinic
+    spec:
+      containers:
+        - image: quay.io/dsanchor/quarkus-petclinic:in-mem
+          imagePullPolicy: Always
+          name: quarkus-petclinic
+          ports:
+            - containerPort: 8080
+              protocol: TCP
